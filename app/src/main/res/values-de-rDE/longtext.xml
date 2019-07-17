@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_write_external_storage_description">
+        Benötigt Schreibrechte um Einträge für Nutzer zugänglich abspeichern zu können.
+
+        Diese App speichert keine persönlichen Informationen.
+    </string>
+    <string name="unassigned_data">
+        Nicht zugeordnete Dateien mit Einträgen zu epileptischen Anfällen existieren.
+
+        Sollen diese dem neuen Benutzerprofil zugeordnet werden?
+    </string>
+
+
+    <string name="a_credits_text">
+        Ich danke meiner Freundin für die Inspiration und das Konzept dieser App, da sie selbst Epilepsie hat.
+    </string>
+
+
+
+    <string-array name="bfList_252">
+        <item>
+            <b>Bugfixes</b>\n
+            — Absturz bei der Erstellung eines neuen Nutzerprofiles nach Neuinstallation\n
+        </item>
+        <item>
+            <b>Neue Features</b>\n
+            — Stoppuhr\n
+        </item>
+        <item>
+            <b>Veränderungen</b>\n
+            — Hintergrund von violett auf weiß geändert
+        </item>
+    </string-array>
+    <string-array name="bfList_251">
+        <item>
+            <b>Bugfixes</b>\n
+            — Medikation wurde nicht in den Editor übernommen beim Anfallseintrag\n
+            — Inhalte nach Kommas im Notizteil wurden nicht gespeichert
+        </item>
+        <item>
+            <b>Neue Features</b>\n
+            — Wisch-Geste um zum Tagebuch und den Diagrammen zu gelangen
+        </item>
+    </string-array>
+
+
+</resources>

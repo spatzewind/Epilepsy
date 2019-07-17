@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Epilepsy</string>
+    <string name="main_name">Epilepsy</string>
+    <string name="new_seizure_entry_name">Epilepsy - seizure entry</string>
+    <string name="diary_name">Epilepsy - diary</string>
+    <string name="diagram_name">Epilepsy - diagrams</string>
+    <string name="diagram_time_series_name">Epilepsy  - time series</string>
+    <string name="diagram_pie_charts_name">Epilepsy - pie charts</string>
+    <string name="settings_name">Epilepsy - settings</string>
+    <string name="users_overview_name">Epilepsy - users</string>
+    <string name="new_user_name">Epilepsy - new user</string>
+    <string name="about_name">Epilepsy - about</string>
+    <string name="bugfixes_name">Epilepsy - bugfixes</string>
+
+    <string name="data_path" translatable="false">/storage/emulated/0/Epilepsy</string>
+
+    <string name="bt_yes">Yes</string>
+    <string name="bt_no">No</string>
+    <string name="bt_save">Save</string>
+    <string name="bt_cancel">Cancel</string>
+    <string name="bt_ok">OK</string>
+    <string name="bt_delete">delete</string>
+    <string name="bt_create">create</string>
+    <string name="bt_later">later</string>
+    <string name="timeFormat">hh:mm a</string>
+    <string name="dateFormat">dd MMM yyyy</string>
+    <string name="dateFormat_short">dd MMM</string>
+    <string name="elapsed_time_days">day(s)</string>
+    <string name="elapsed_time_hours">hour(s)</string>
+    <string name="elapsed_time_minutes">minute(s)</string>
+    <string name="elapsed_time_seconds">second(s)</string>
+    <string name="elapsed_time_since">since last seizure</string>
+    <string name="elapsed_time_description">Time since last seizure</string>
+    <string name="elapsed_time_press_for_stop">press to stop</string>
+    <string name="unknown_user">unknown user</string>
+    <string name="seizure_number">Seizure number</string>
+    <string name="seizure_number_of">of</string>
+
+    <string name="new_seizure">Seizure</string>
+    <string name="new_seizure_description">create an entry for a new seizure event</string>
+    <string name="no_user">
+        No user profile detected.\n\n
+        Please create a new user profile so that future entries can be assigned to each user.
+    </string>
+    <string name="diary">Diary</string>
+    <string name="diagrams">Diagrams</string>
+    <string name="users">Users</string>
+    <string name="settings">Settings</string>
+    <string name="about">About this app</string>
+    <string name="bugfixes">Bugfixes</string>
+
+    <string name="a_appinfo">App info:</string>
+    <string name="a_appinfo_data_title" translatable="false">
+        Version:\nCode:</string>
+    <string name="a_appinfo_data" translatable="false">
+        ~.~.~\n~~~</string>
+    <string name="a_credits">Credits</string>
+    <string name="a_translation">Translations</string>
+    <string name="a_translation_languages" translatable="false">
+        English\nDeutsch
+    </string>
+    <string name="a_translation_names" translatable="false">
+        Enrico M., Lena K.\nEnrico M., Lena K.
+    </string>
+
+    <string name="ns_name">Name</string>
+    <string name="ns_date">Date</string>
+    <string name="ns_time">Time</string>
+    <string name="ns_duration">Duration</string>
+    <string name="ns_warning">Warning(s)</string>
+    <string name="ns_trigger">Trigger</string>
+    <string name="ns_emergency">Emergency</string>
+    <string name="ns_daytime">Time of day</string>
+    <string name="ns_notes">Note(s)</string>
+    <string name="ns_seizure">Seizure type</string>
+    <string name="ns_status">Status</string>
+    <string name="ns_not_set">not set</string>
+    <string name="ns_error_future_date">date is in future</string>
+    <string name="ns_error_no_checked_warning">no warning is set</string>
+    <string name="ns_error_no_checked_trigger">no trigger is set</string>
+    <string name="ns_error_save_new_entry">error while saving</string>
+    <string name="ns_error_delete_old_entry">error while deleting</string>
+
+    <string name="diary_seizure_symbol">seizure type icon</string>
+    <string name="diary_no_data">no entries</string>
+
+    <string name="diagram_timeseries">Timeseries</string>
+    <string name="diagram_piecharts">Piecharts</string>
+    <string name="diagram_ts_dateFormat">yyyy MMM</string>
+    <string name="diagram_ts_date_description">Date for timeseries</string>
+
+    <string name="create_user">Create new user</string>
+    <string name="nu_not_available">not available</string>
+    <string name="nu_user_id">User ID</string>
+    <string name="nu_name">Name *</string>
+    <string name="nu_colour">Colour *</string>
+    <string name="nu_gender">Gender</string>
+    <string name="nu_birthday">Birthday</string>
+    <string name="nu_epi_type">Type of Epilepsy</string>
+    <string name="nu_medi">Medication</string>
+    <string name="nu_date_picker_day">Day</string>
+    <string name="nu_date_picker_month">Month</string>
+    <string name="nu_date_picker_year">Year</string>
+    <string name="nu_required">* mandatory</string>
+    <string name="delete_user_warning">
+        Do you really want to delete this user profile with all entries about epileptic seizures?
+    </string>
+    <string name="nu_error_missing_short_name">Please enter a name with at least 3 characters.</string>
+    <string name="nu_error_save_user_profil">Could not save new user profil.</string>
+    <string name="nu_error_delete_user_profil">Could not delete user profil.</string>
+    <string name="nu_error_delete_user_directory">Could not delete directory</string>
+    <string name="nu_error_delete_seizure_file">Could not delete file</string>
+    <string name="ueh_error_creation_user_file">Could not create user data file.</string>
+    <string name="ueh_error_file_dont_exist">No user data file exist.</string>
+
+    <string name="settings_language">Language</string>
+
+
+    <string-array name="seizure_type_list">
+        <item>not known</item>
+        <item>Absence</item>
+        <item>Atonic</item>
+        <item>Atypical Absence</item>
+        <item>Aura only</item>
+        <item>Clonic</item>
+        <item>Complex Partial</item>
+        <item>Myclonic</item>
+        <item>Myoclonic Cluster</item>
+        <item>Gelastic</item>
+        <item>Infantile Spasm</item>
+        <item>Secondarily Generalized</item>
+        <item>Simple Partial</item>
+        <item>Tonic</item>
+        <item>Tonic-Clonic</item>
+    </string-array>
+
+    <string-array name="ns_warning_list">
+        <item>Unknown</item>
+        <item>No warning</item>
+        <item>Confusion</item>
+        <item>Hallucination</item>
+        <item>Headache</item>
+        <item>Muscle weakness</item>
+        <item>Strange emotion(s)</item>
+        <item>Strange sensation</item>
+        <item>Strange smell</item>
+        <item>Strange taste</item>
+        <item>Jerky movement of limb</item>
+    </string-array>
+
+    <string-array name="ns_trigger_list">
+        <item>Unknown</item>
+        <item>Alcohol</item>
+        <item>Anxiety</item>
+        <item>Bright / Flashing light</item>
+        <item>Coldness</item>
+        <item>Drugs</item>
+        <item>Excitement</item>
+        <item>Fever</item>
+        <item>Flickering light</item>
+        <item>Heat</item>
+        <item>High ketones</item>
+        <item>High/loud tunes</item>
+        <item>Hyperthermia</item>
+        <item>Illness</item>
+        <item>Low ketones</item>
+        <item>Drug-conversion</item>
+        <item>Stress</item>
+        <item>Tiredness</item>
+        <item>Emotional stress</item>
+        <item>period/menstruation</item>
+    </string-array>
+
+    <string-array name="ns_emergency_list">
+        <item>no emergency</item>
+        <item>emergency</item>
+        <item>medication</item>
+    </string-array>
+    <string-array name="ns_daytime_list">
+        <item>on awaking</item>
+        <item>during day</item>
+        <item>falling asleep</item>
+        <item>during sleep</item>
+    </string-array>
+
+    <string-array name="monthAbbr">
+        <item>Jan.</item>
+        <item>Feb.</item>
+        <item>Mar.</item>
+        <item>Apr.</item>
+        <item>Mai</item>
+        <item>June</item>
+        <item>July</item>
+        <item>Aug.</item>
+        <item>Sep.</item>
+        <item>Oct.</item>
+        <item>Nov.</item>
+        <item>Dec.</item>
+    </string-array>
+
+    <string-array name="diagram_timeseries_list">
+        <item>year view</item>
+        <item>month view</item>
+    </string-array>
+    <string-array name="diagram_piechart_list">
+        <item>seizure types</item>
+        <item>warnings</item>
+        <item>trigger</item>
+        <item>emergency</item>
+        <item>daytime</item>
+    </string-array>
+
+    <string-array name="nu_gender_list">
+        <item>not available</item>
+        <item>male</item>
+        <item>female</item>
+        <item>neither</item>
+    </string-array>
+    <string-array name="nu_colours_pie_chart">
+        <item>gray</item>
+        <item>red</item>
+        <item>yellow</item>
+        <item>blue</item>
+        <item>green</item>
+        <item>violet</item>
+        <item>orange</item>
+        <item>light blue</item>
+        <item>dark green</item>
+        <item>dark red</item>
+        <item>bright yellow</item>
+        <item>pink</item>
+        <item>indigo</item>
+        <item>light green</item>
+        <item>dark orange</item>
+        <item>light orange</item>
+        <item>dark yellow</item>
+        <item>rosa</item>
+    </string-array>
+
+    <string-array name="languages">
+        <item>en english</item>
+        <item>de german</item>
+    </string-array>
+</resources>

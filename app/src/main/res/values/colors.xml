@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#9966cc</color>
+    <color name="colorPrimaryDark">#663399</color>
+    <color name="colorAccent">#9966cc</color>
+
+    <color name="semi_background">#cc666666</color>
+
+    <color name="violet1">#a7209a</color>
+    <color name="light_violet">#cc99ff</color>
+    <color name="mid_violet">#9966cc</color>
+    <color name="dark_violet">#663399</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="highlight_violet">#f2e4ff</color>
+    <color name="dark_red">#990000</color>
+    <color name="blue_metallic">#0d47a1</color>
+
+</resources>

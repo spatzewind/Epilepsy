@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_diary"
+        android:title="@string/diary" />
+
+    <item
+        android:id="@+id/menu_diagrams"
+        android:title="@string/diagrams" />
+
+    <item
+        android:id="@+id/menu_users"
+        android:title="@string/users" />
+
+    <item
+        android:id="@+id/menu_settings"
+        android:title="@string/settings" />
+
+    <item
+        android:id="@+id/menu_about"
+        android:title="@string/about" />
+
+    <item
+        android:id="@+id/menu_bugfixes"
+        android:title="@string/bugfixes" />
+
+</menu>

@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".seizure.NewSeizureEntry">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/new_seizure_mainView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/white">
+
+        <ScrollView
+            android:id="@+id/ns_table_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="48sp"
+            android:layout_weight="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TableLayout
+                android:id="@+id/ns_table"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:id="@+id/row_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/row_name_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/ns_name"
+                        android:text="@string/ns_name"
+                        android:textColor="@color/violet1"
+                        android:textSize="18sp"
+                        tools:text="@string/ns_name" />
+
+                    <Spinner
+                        android:id="@+id/row_name_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:minWidth="140dp"
+                        android:minHeight="32dp"
+                        android:textAlignment="center" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/row_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/row_date_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/ns_date"
+                        android:labelFor="@id/row_date_edit"
+                        android:text="@string/ns_date"
+                        android:textColor="@color/violet1"
+                        android:textSize="18sp"
+                        tools:text="@string/ns_date" />
+
+                    <Button
+                        android:id="@+id/row_date_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:contentDescription="@string/ns_date"
+                        android:onClick="invokeButtonInput"
+                        android:text="@string/ns_date"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        tools:text="@string/ns_date" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/row_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/row_time_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/ns_time"
+                        android:labelFor="@id/row_time_edit"
+                        android:text="@string/ns_time"
+                        android:textColor="@color/violet1"
+                        android:textSize="18sp"
+                        tools:text="@string/ns_time" />
+
+                    <Button
+                        android:id="@+id/row_time_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:contentDescription="@string/ns_time"
+                        android:onClick="invokeButtonInput"
+                        android:text="@string/ns_time"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        tools:text="@string/ns_time" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/row_duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/row_duration_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/ns_duration"
+                        android:labelFor="@id/row_duration_edit"
+                        android:text="@string/ns_duration"
+                        android:textColor="@color/violet1"
+                        android:textSize="18sp"
+                        tools:text="@string/ns_duration" />
+
+                    <Button
+                        android:id="@+id/row_duration_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:contentDescription="@string/ns_duration"
+                        android:onClick="invokeButtonInput"
+                        android:text="@string/ns_duration"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        tools:text="@string/ns_duration" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/row_seizure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/row_seizure_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/ns_seizure"
+                        android:labelFor="@id/row_seizure_edit"
+                        android:minWidth="100dp"
+                        android:text="@string/ns_seizure"
+                        android:textColor="@color/violet1"
+                        android:textSize="18sp"
+                        tools:text="@string/ns_seizure" />
+
+                    <Spinner
+                        android:id="@+id/row_seizure_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:entries="@array/seizure_type_list"
+                        android:minWidth="140dp"
+                        android:minHeight="32dp"
+                        android:textAlignment="center" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/row_seizure2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end">
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <CheckBox
+                        android:id="@+id/row_seizure_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:buttonTint="@color/dark_violet"
+                        android:checked="false"
+                        android:clickable="true"
+                        android:contentDescription="@string/ns_status"
+                        android:focusable="true"
+                        android:minWidth="100dp"
+                        android:text="@string/ns_status"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:text="@string/ns_status" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/row_warning"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/row_warning_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/ns_warning"
+                        android:labelFor="@id/row_warnings_edit"
+                        android:text="@string/ns_warning"
+                        android:textColor="@color/violet1"
+                        android:textSize="18sp"
+                        tools:text="@string/ns_warning" />
+
+                    <Button
+                        android:id="@+id/row_warnings_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:contentDescription="@string/ns_warning"
+                        android:onClick="invokeButtonInput"
+                        android:text="@string/ns_warning"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        tools:text="@string/ns_warning" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/row_trigger"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/row_trigger_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/ns_trigger"
+                        android:labelFor="@id/row_trigger_edit"
+                        android:text="@string/ns_trigger"
+                        android:textColor="@color/violet1"
+                        android:textSize="18sp"
+                        tools:text="@string/ns_trigger" />
+
+                    <Button
+                        android:id="@+id/row_trigger_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:contentDescription="@string/ns_trigger"
+                        android:onClick="invokeButtonInput"
+                        android:text="@string/ns_trigger"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        tools:text="@string/ns_trigger" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/row_emergency"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/row_emergency_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/ns_emergency"
+                        android:labelFor="@id/row_emergency_edit"
+                        android:text="@string/ns_emergency"
+                        android:textColor="@color/violet1"
+                        android:textSize="18sp"
+                        tools:text="@string/ns_emergency" />
+
+                    <Spinner
+                        android:id="@+id/row_emergency_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:entries="@array/ns_emergency_list"
+                        android:minHeight="32dp"
+                        android:textAlignment="center" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/row_daytime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/row_daytime_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/ns_daytime"
+                        android:labelFor="@id/row_daytime_edit"
+                        android:text="@string/ns_daytime"
+                        android:textColor="@color/violet1"
+                        android:textSize="18sp"
+                        tools:text="@string/ns_daytime" />
+
+                    <Spinner
+                        android:id="@+id/row_daytime_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:entries="@array/ns_daytime_list"
+                        android:minHeight="32dp"
+                        android:textAlignment="center" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/row_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/row_notes_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/ns_notes"
+                        android:labelFor="@+id/row_notes_edit"
+                        android:text="@string/ns_notes"
+                        android:textColor="@color/violet1"
+                        android:textSize="18sp"
+                        tools:text="@string/ns_notes" />
+
+                    <Button
+                        android:id="@+id/row_notes_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:contentDescription="@string/ns_notes"
+                        android:onClick="invokeButtonInput"
+                        android:text="@string/ns_notes"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        tools:text="@string/ns_notes" />
+                </TableRow>
+            </TableLayout>
+
+        </ScrollView>
+
+
+        <TableRow
+            android:id="@+id/button_line_new"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ns_table_scrollview">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/button_save_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_bg_save"
+                android:contentDescription="@string/bt_save"
+                android:onClick="saveSeizureEntry"
+                android:text="@string/bt_save"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="@string/bt_save" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/button_line_diary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ns_table_scrollview">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/button_delete_diary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_bg_cancel"
+                android:contentDescription="@string/bt_delete"
+                android:onClick="deleteSeizureEntry"
+                android:text="@string/bt_delete"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="@string/bt_delete" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/button_save_diary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_bg_save"
+                android:contentDescription="@string/bt_save"
+                android:onClick="saveSeizureEntry"
+                android:text="@string/bt_save"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ns_table"
+                tools:text="@string/bt_save" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </TableRow>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/ns_view_date_picker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:background="@color/semi_background">
+
+        <DatePicker
+            android:id="@+id/date_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/white"
+            android:datePickerMode="calendar"
+            android:numbersSelectorColor="@color/violet1"
+            android:theme="@style/AppTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/view_date_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/button_bg_save"
+            android:contentDescription="@string/bt_ok"
+            android:onClick="retrieveButtonInput"
+            android:text="@string/bt_ok"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/date_picker"
+            tools:text="@string/bt_ok" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/ns_view_time_picker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:background="@color/semi_background" >
+
+        <TimePicker
+            android:id="@+id/time_picker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/white"
+            android:numbersSelectorColor="@color/violet1"
+            android:theme="@style/AppTheme"
+            android:timePickerMode="clock"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/view_time_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/button_bg_save"
+            android:contentDescription="@string/bt_ok"
+            android:onClick="retrieveButtonInput"
+            android:text="@string/bt_ok"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/time_picker"
+            tools:text="@string/bt_ok" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/ns_view_duration_picker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/semi_background"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:id="@+id/linear_titles"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="60dp"
+            android:background="@color/mid_violet"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/number_picker_hours_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:text="@string/elapsed_time_hours"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/number_picker_minutes_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:text="@string/elapsed_time_minutes"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/number_picker_seconds_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:text="@string/elapsed_time_seconds"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_numbers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/white"
+            android:gravity="center_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear_titles">
+
+            <NumberPicker
+                android:id="@+id/number_picker_hours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number" />
+
+            <NumberPicker
+                android:id="@+id/number_picker_minutes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number" />
+
+            <NumberPicker
+                android:id="@+id/number_picker_seconds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear_numbers"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/view_duration_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_bg_save"
+                android:contentDescription="@string/bt_ok"
+                android:onClick="retrieveButtonInput"
+                android:text="@string/bt_ok"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="@string/bt_ok" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/ns_view_warning_picker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/semi_background"
+        android:visibility="invisible">
+
+        <TextView
+            android:id="@+id/ns_view_warning_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/dark_violet"
+            android:contentDescription="@string/ns_warning"
+            android:labelFor="@id/ns_view_warning_group"
+            android:text="@string/ns_warning"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/ns_warning" />
+
+        <ListView
+            android:id="@+id/ns_view_warning_group"
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:layout_marginBottom="160dp"
+            android:background="@color/white"
+            android:minHeight="128dp"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ns_view_warning_title" />
+
+        <Button
+            android:id="@+id/ns_view_warning_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/button_bg_save"
+            android:onClick="retrieveButtonInput"
+            android:text="@string/bt_ok"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ns_view_warning_group" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/ns_view_trigger_picker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:background="@color/semi_background" >
+
+        <TextView
+            android:id="@+id/ns_view_trigger_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/dark_violet"
+            android:contentDescription="@string/ns_trigger"
+            android:labelFor="@id/ns_view_trigger_group"
+            android:text="@string/ns_trigger"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/ns_trigger" />
+
+        <ListView
+            android:id="@+id/ns_view_trigger_group"
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="160dp"
+            android:background="@color/white"
+            android:minHeight="128dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ns_view_trigger_title" />
+
+        <Button
+            android:id="@+id/ns_view_trigger_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/button_bg_save"
+            android:onClick="retrieveButtonInput"
+            android:text="@string/bt_ok"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ns_view_trigger_group" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/ns_view_notes_picker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/semi_background"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:id="@+id/ns_view_notes_picker_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:orientation="vertical"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
+
+            <TextView
+                android:id="@+id/ns_view_notes_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/light_violet"
+                android:contentDescription="@string/ns_notes"
+                android:labelFor="@id/ns_view_notes_edit"
+                android:text="@string/ns_notes"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="@string/ns_notes" />
+
+            <EditText
+                android:id="@+id/ns_view_notes_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:autofillHints="notes"
+                android:background="@drawable/listview_bg_border"
+                android:contentDescription="@string/ns_notes"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:minHeight="128dp"
+                android:selectAllOnFocus="true"
+                android:singleLine="false"
+                android:text="@string/ns_notes"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="@string/ns_notes" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="64dp" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/ns_view_notes_ok"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_bg_save"
+                    android:onClick="retrieveButtonInput"
+                    android:text="@string/bt_ok" />
+
+                <Space
+                    android:id="@+id/ns_view_notes_space_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="btnplusview">1</integer>
+    <integer name="btnpluspos">2</integer>
+
+    <integer name="MAIN_ACTIVITY_ID">13010914</integer>
+    <integer name="DIARY_ACTIVITY_ID">4090118</integer>
+
+    <integer-array name="ns_daytime_list_ids">
+        <item>97</item>
+        <item>100</item>
+        <item>102</item>
+        <item>116</item>
+    </integer-array>
+
+    <integer-array name="colors_pie_chart">
+        <item>0xff999999</item>
+        <item>0xffcc0000</item>
+        <item>0xffcccc00</item>
+        <item>0xff0000cc</item>
+        <item>0xff00cc00</item>
+        <item>0xffa72098</item>
+        <item>0xffcc9900</item>
+        <item>0xff6699ff</item>
+        <item>0xff007f00</item>
+        <item>0xff7f0000</item>
+        <item>0xffffff66</item>
+        <item>0xffff33ff</item>
+        <item>0xff003366</item>
+        <item>0xff66ff66</item>
+        <item>0xffa06000</item>
+        <item>0xffffcc99</item>
+        <item>0xff999900</item>
+        <item>0xffffdcdc</item>
+    </integer-array>
+
+</resources>

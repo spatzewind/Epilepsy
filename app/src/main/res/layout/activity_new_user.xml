@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nu_rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/new_user_main_constraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <ScrollView
+            android:id="@+id/nu_table_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="64sp"
+            android:layout_weight="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" >
+
+            <TableLayout
+                android:id="@+id/nu_table"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:id="@+id/nu_row_userID"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/nu_row_userID_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/nu_user_id"
+                        android:text="@string/nu_user_id"
+                        android:textColor="@color/violet1"
+                        android:textSize="18sp"
+                        tools:text="@string/nu_user_id" />
+
+                    <TextView
+                        android:id="@+id/nu_row_userID_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:contentDescription="@string/nu_user_id"
+                        android:textAlignment="center" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/nu_row_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/nu_row_name_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/nu_name"
+                        android:labelFor="@id/nu_row_name_edit"
+                        android:text="@string/nu_name"
+                        android:textColor="@color/violet1"
+                        android:textSize="18sp"
+                        tools:text="@string/nu_name" />
+
+                    <Button
+                        android:id="@+id/nu_row_name_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:contentDescription="@string/nu_name"
+                        android:onClick="invokeButtonInput"
+                        android:text="@string/nu_name"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        tools:text="@string/nu_name" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/nu_row_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/nu_row_gender_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/nu_gender"
+                        android:text="@string/nu_gender"
+                        android:textColor="@color/violet1"
+                        android:textSize="18sp"
+                        tools:text="@string/nu_gender" />
+
+                    <Spinner
+                        android:id="@+id/nu_row_gender_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:entries="@array/nu_gender_list"
+                        android:minWidth="140dp"
+                        android:minHeight="32dp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/nu_row_birthday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/nu_row_birthday_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/nu_birthday"
+                        android:text="@string/nu_birthday"
+                        android:textColor="@color/violet1"
+                        android:textSize="18sp"
+                        tools:text="@string/nu_birthday" />
+
+                    <Button
+                        android:id="@+id/nu_row_birthday_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:contentDescription="@string/nu_birthday"
+                        android:onClick="invokeButtonInput"
+                        android:text="@string/nu_birthday"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        tools:text="@string/nu_birthday" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/nu_row_colour"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/nu_row_colour_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/nu_colour"
+                        android:text="@string/nu_colour"
+                        android:textAllCaps="false"
+                        android:textColor="@color/violet1"
+                        android:textSize="18sp"
+                        tools:text="@string/nu_colour" />
+
+                    <Spinner
+                        android:id="@+id/nu_row_colour_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:entries="@array/nu_colours_pie_chart"
+                        android:minWidth="140dp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/nu_row_epi_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/nu_row_epi_type_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/nu_epi_type"
+                        android:text="@string/nu_epi_type"
+                        android:textAllCaps="false"
+                        android:textColor="@color/violet1"
+                        android:textSize="18sp"
+                        tools:text="@string/nu_epi_type" />
+
+                    <Button
+                        android:id="@+id/nu_row_epi_type_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:contentDescription="@string/nu_epi_type"
+                        android:onClick="invokeButtonInput"
+                        android:text="@string/nu_epi_type"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        tools:text="@string/nu_epi_type" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/nu_row_medication"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/nu_row_medication_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/nu_medi"
+                        android:text="@string/nu_medi"
+                        android:textAllCaps="false"
+                        android:textColor="@color/violet1"
+                        android:textSize="18sp"
+                        tools:text="@string/nu_medi" />
+
+                    <Button
+                        android:id="@+id/nu_row_medication_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:contentDescription="@string/nu_medi"
+                        android:onClick="invokeButtonInput"
+                        android:text="@string/nu_medi"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        tools:text="@string/nu_medi" />
+
+                </TableRow>
+            </TableLayout>
+
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:contentDescription="@string/nu_required"
+            android:text="@string/nu_required"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nu_table_scrollview"
+            tools:text="@string/nu_required" />
+
+        <TableRow
+            android:id="@+id/nu_buttons_new"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nu_table_scrollview">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/user_save_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_bg_save"
+                android:contentDescription="@string/bt_save"
+                android:onClick="saveUser"
+                android:text="@string/bt_save"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:text="@string/bt_save" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/nu_buttons_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nu_table_scrollview">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/nu_delete_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_bg_cancel"
+                android:contentDescription="@string/bt_delete"
+                android:onClick="deleteUser"
+                android:text="@string/bt_delete"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:text="@string/bt_delete" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/nu_save_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_bg_save"
+                android:contentDescription="@string/bt_save"
+                android:onClick="saveUser"
+                android:text="@string/bt_save"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:text="@string/bt_save" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/nu_view_text_picker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/semi_background"
+        android:visibility="invisible" >
+
+        <TextView
+            android:id="@+id/nu_view_text_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="60dp"
+            android:background="@color/mid_violet"
+            android:contentDescription="@string/ns_notes"
+            android:labelFor="@id/nu_view_text_edit"
+            android:text="@string/ns_notes"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/ns_notes" />
+
+        <EditText
+            android:id="@+id/nu_view_text_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="0dp"
+            android:autofillHints="name"
+            android:background="@color/white"
+            android:contentDescription="@string/ns_notes"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:minHeight="128dp"
+            android:maxHeight="256dp"
+            android:selectAllOnFocus="true"
+            android:singleLine="false"
+            android:text="@string/ns_notes"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nu_view_text_title"
+            tools:text="@string/ns_notes" />
+
+        <Button
+            android:id="@+id/nu_view_text_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/button_bg_save"
+            android:onClick="retrieveButtonInput"
+            android:text="@string/bt_ok"
+            app:layout_constraintTop_toBottomOf="@id/nu_view_text_edit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/nu_view_birthday_picker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/semi_background"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:id="@+id/linear_birthday_titles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="60dp"
+            android:background="@color/mid_violet"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <TextView
+                android:id="@+id/birthday_picker_day_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/nu_date_picker_day"
+                android:ems="10"
+                android:text="@string/nu_date_picker_day"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                tools:text="@string/nu_date_picker_day" />
+
+            <TextView
+                android:id="@+id/birthday_picker_month_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/nu_date_picker_month"
+                android:ems="10"
+                android:text="@string/nu_date_picker_month"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                tools:text="@string/nu_date_picker_month" />
+
+            <TextView
+                android:id="@+id/birthday_picker_year_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/nu_date_picker_year"
+                android:ems="10"
+                android:text="@string/nu_date_picker_year"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                tools:text="@string/nu_date_picker_year" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_birthday_numbers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/white"
+            android:gravity="center_horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear_birthday_titles">
+
+            <NumberPicker
+                android:id="@+id/birthday_picker_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10" />
+
+            <NumberPicker
+                android:id="@+id/birthday_picker_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:ems="10" />
+
+            <NumberPicker
+                android:id="@+id/birthday_picker_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:ems="10" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/nu_view_birthday_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_save"
+            android:contentDescription="@string/bt_ok"
+            android:onClick="retrieveButtonInput"
+            android:text="@string/bt_ok"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear_birthday_numbers"
+            tools:text="@string/bt_ok" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/nu_view_unassigned_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/semi_background"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="32dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white"
+                android:contentDescription="@string/unassigned_data"
+                android:text="@string/unassigned_data"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="@string/unassigned_data" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/nu_view_unassigned_data_copy_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_bg_cancel"
+                    android:contentDescription="@string/bt_no"
+                    android:onClick="copyDataChoice"
+                    android:text="@string/bt_no"
+                    android:textAllCaps="false" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/nu_view_unassigned_data_copy_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_bg_save"
+                    android:contentDescription="@string/bt_yes"
+                    android:onClick="copyDataChoice"
+                    android:text="@string/bt_yes"
+                    android:textAllCaps="true" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>

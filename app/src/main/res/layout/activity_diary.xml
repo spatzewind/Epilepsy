@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/diary_relative_layout_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".diary.DiaryActivity"
+    >
+
+    <Spinner
+        android:id="@+id/diary_user_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:minWidth="140dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CalendarView
+        android:id="@+id/diary_date_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="4dp"
+        android:clickable="true"
+        android:dateTextAppearance="@style/TextAppearance.AppCompat"
+        android:fitsSystemWindows="true"
+        android:focusable="true"
+        android:focusedMonthDateColor="@color/light_violet"
+        android:importantForAccessibility="yes"
+        android:scaleY="0.9"
+        android:scrollY="20dp"
+        android:unfocusedMonthDateColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/diary_user_spinner" />
+
+    <ListView
+        android:id="@+id/diary_list_entries"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="260dp"
+        android:layout_marginBottom="8dp"
+        android:padding="4dp"
+        android:background="@drawable/listview_bg_border"
+        android:scrollbars="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/diary_date_picker"
+        app:layout_constraintBottom_toBottomOf="parent" >
+
+    </ListView>
+
+</android.support.constraint.ConstraintLayout>

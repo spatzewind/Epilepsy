@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_write_external_storage_description">
+        Need write access to external storage for saving your input of seizure data.
+
+        This App do not save any personal information.
+    </string>
+    <string name="unassigned_data">
+        Unassigned files with entries for epileptic seizures exist.
+
+        Do you want to assign them to the new user profile?
+    </string>
+
+
+    <string name="a_credits_text">
+        I thank my girlfriend for the inspiration and the concept of this app because she has epilepsy herself.
+    </string>
+
+
+
+
+    <string-array name="bfList_252">
+        <item>
+            <b>Bugfixes</b>\n
+            — Crash while creating a new user entry after reinstallation\n
+        </item>
+        <item>
+            <b>New Features</b>\n
+            — Stopwatch\n
+        </item>
+        <item>
+            <b>Changes</b>\n
+            — Background changed from violet to white\n
+        </item>
+    </string-array>
+    <string-array name="bfList_251">
+        <item>
+            <b>Bugfixes</b>\n
+            — medication wasn't transferred to editor in seizure entry\n
+            — content after commas in notes wasn't saved correctly\n
+        </item>
+        <item>
+            <b>New Features</b>\n
+            — Swipe gesture to access diary and diagrams\n
+        </item>
+    </string-array>
+</resources>

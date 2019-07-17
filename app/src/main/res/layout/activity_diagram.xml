@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/diagram_relative_layout_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".diagrams.DiagramActivity">
+
+    <TextView
+        android:id="@+id/dia_title_timeseries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/diagram_timeseries"
+        android:text="@string/diagram_timeseries"
+        android:textColor="@color/violet1"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/diagram_timeseries" />
+
+    <ImageButton
+        android:id="@+id/dia_button_timeseries"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/white"
+        android:contentDescription="@string/diagram_timeseries"
+        android:onClick="showCharts"
+        android:scaleType="fitXY"
+        android:src="@drawable/dia_icon_timeseries"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dia_title_timeseries" />
+
+    <TextView
+        android:id="@+id/dia_title_piecharts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/diagram_piecharts"
+        android:text="@string/diagram_piecharts"
+        android:textColor="@color/violet1"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dia_button_timeseries"
+        tools:text="@string/diagram_piecharts" />
+
+    <ImageButton
+        android:id="@+id/dia_button_piecharts"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/white"
+        android:contentDescription="@string/diagram_piecharts"
+        android:onClick="showCharts"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dia_title_piecharts"
+        app:srcCompat="@drawable/dia_icon_piecharts" />
+
+</android.support.constraint.ConstraintLayout>

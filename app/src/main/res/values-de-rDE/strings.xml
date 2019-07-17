@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Epilepsie</string>
+    <string name="main_name">Epilepsie</string>
+    <string name="new_seizure_entry_name">Epilepsie - Eintragung eines Anfall</string>
+    <string name="diary_name">Epilepsie - Tagebuch</string>
+    <string name="diagram_name">Epilepsie - Diagramme</string>
+    <string name="diagram_time_series_name">Epilepsie  - Zeitreihen</string>
+    <string name="diagram_pie_charts_name">Epilepsie - Tortendiagramme</string>
+    <string name="settings_name">Epilepsie - Einstellungen</string>
+    <string name="users_overview_name">Epilepsie - Nutzer</string>
+    <string name="new_user_name">Epilepsie - Neuer Nutzer</string>
+    <string name="about_name">Epilepsie - Über diese App</string>
+    <string name="bugfixes_name">Epilepsie - Bugfixes</string>
+
+    <string name="bt_yes">Ja</string>
+    <string name="bt_no">Nein</string>
+    <string name="bt_save">Speichern</string>
+    <string name="bt_cancel">Abbrechen</string>
+    <string name="bt_ok">Ok</string>
+    <string name="bt_delete">löschen</string>
+    <string name="bt_create">erstellen</string>
+    <string name="bt_later">später</string>
+    <string name="timeFormat">HH:mm</string>
+    <string name="dateFormat">dd MMM yyyy</string>
+    <string name="dateFormat_short">dd MMM</string>
+    <string name="elapsed_time_days">Tag(e)</string>
+    <string name="elapsed_time_hours">Stunde(n)</string>
+    <string name="elapsed_time_minutes">Minute(n)</string>
+    <string name="elapsed_time_seconds">Sekunde(n)</string>
+    <string name="elapsed_time_since">seit letztem Anfall</string>
+    <string name="elapsed_time_description">Zeit seit letztem Anfall</string>
+    <string name="elapsed_time_press_for_stop">Antippen zu Stoppen</string>
+    <string name="unknown_user">Unbekannter Nutzer</string>
+    <string name="seizure_number">Anzahl der Anfälle</string>
+    <string name="seizure_number_of">von</string>
+
+    <string name="new_seizure">Anfall</string>
+    <string name="new_seizure_description">Erstelle einen Eintrag für einen neuen Anfall</string>
+    <string name="no_user">
+        Kein Benutzerprofil gefunden.\n\n
+        Bitte erstellen Sie ein neues Benutzerprofil, damit jedem Benutzer zukünftige Einträge zugeordnet werden können.
+    </string>
+    <string name="diary">Tagebuch</string>
+    <string name="diagrams">Diagramme</string>
+    <string name="users">Nutzer</string>
+    <string name="settings">Einstellungen</string>
+    <string name="about">Über diese App</string>
+    <string name="bugfixes">Bugfixes</string>
+
+    <string name="a_appinfo">App-Info:</string>
+    <string name="a_credits">Danksagung</string>
+    <string name="a_translation">Übersetzungen</string>
+
+    <string name="ns_name">Name</string>
+    <string name="ns_date">Datum</string>
+    <string name="ns_time">Uhrzeit</string>
+    <string name="ns_duration">Dauer</string>
+    <string name="ns_warning">Warnzeichen</string>
+    <string name="ns_trigger">Auslöser</string>
+    <string name="ns_emergency">Hilfe?</string>
+    <string name="ns_daytime">Tageszeit</string>
+    <string name="ns_notes">Anmerkung(en)</string>
+    <string name="ns_seizure">Anfallstyp</string>
+    <string name="ns_status">Status</string>
+    <string name="ns_not_set">nicht gesetzt</string>
+    <string name="ns_error_future_date">Datum liegt in der Zukunft</string>
+    <string name="ns_error_no_checked_warning">Kein Warnzeichen ist gesetzt</string>
+    <string name="ns_error_no_checked_trigger">Kein Auslöser ist gesetzt</string>
+    <string name="ns_error_save_new_entry">Fehler beim Speichern</string>
+    <string name="ns_error_delete_old_entry">Fehler beim Löschen</string>
+
+    <string name="diary_seizure_symbol">Anfallsart Symbol</string>
+    <string name="diary_no_data">Keine Einträge</string>
+
+    <string name="diagram_timeseries">Zeitreihen</string>
+    <string name="diagram_piecharts">Tortendiagramme</string>
+    <string name="diagram_ts_dateFormat">MMM yyyy</string>
+    <string name="diagram_ts_date_description">Datum für die Zeitreihe</string>
+
+    <string name="create_user">Erstelle neuen Nutzer</string>
+    <string name="nu_not_available">keine Angabe</string>
+    <string name="nu_user_id">Benutzer ID</string>
+    <string name="nu_name">Name *</string>
+    <string name="nu_colour">Farbe *</string>
+    <string name="nu_gender">Geschlecht</string>
+    <string name="nu_birthday">Geburtstag</string>
+    <string name="nu_epi_type">Art der Epilepsie</string>
+    <string name="nu_medi">Medikation</string>
+    <string name="nu_date_picker_day">Tag</string>
+    <string name="nu_date_picker_month">Monat</string>
+    <string name="nu_date_picker_year">Jahr</string>
+    <string name="nu_required">* Pflichtfeld</string>
+    <string name="delete_user_warning">
+        Möchten Sie wirklich dieses Benutzerprofil mit allen Einträgen zu epileptischen Anfällen löschen?
+    </string>
+    <string name="nu_error_missing_short_name">Bitte geben Sie einen Namen ein, der mindestens 3 Zeichen lang ist.</string>
+    <string name="nu_error_save_user_profil">Neues Benutzerprofil konnte nicht gespeichert werden.</string>
+    <string name="nu_error_delete_user_profil">Es trat ein Fehler beim Löschen des Benutzerprofils auf.</string>
+    <string name="nu_error_delete_user_directory">Fehler beim Löschen des Ordners</string>
+    <string name="nu_error_delete_seizure_file">Fehler beim Löschen der Datei</string>
+    <string name="ueh_error_creation_user_file">Nutzer-Daten-Datei konnte nicht angelegt werden.</string>
+    <string name="ueh_error_file_dont_exist">Es existiert keine Nutzer-Daten-Datei.</string>
+
+    <string name="settings_language">Sprache</string>
+
+
+
+
+    <string-array name="seizure_type_list">
+        <item>unbekannt</item>
+        <item>Absenz</item>
+        <item>Atonischer Anfall</item>
+        <item>Atypische Absenz</item>
+        <item>Nur Aura</item>
+        <item>Clonischer Anfall</item>
+        <item>Komplex-partieller (fokaler) Anfall</item>
+        <item>Myclonischer Anfall</item>
+        <item>Myoclonischer Cluster</item>
+        <item>Gelastischer Anfall</item>
+        <item>Infantile Krämpfe</item>
+        <item>Sekundär-generalisierter Anfall</item>
+        <item>Einfach-partieller (fokaler) Anfall</item>
+        <item>Tonischer Anfall</item>
+        <item>Tonisch-Clonischer Anfall</item>
+    </string-array>
+
+    <string-array name="ns_warning_list">
+        <item>Unbekannt</item>
+        <item>Keine Vorwahrnung</item>
+        <item>Verwirrtheit</item>
+        <item>Halluzination</item>
+        <item>Kopfschmerzen</item>
+        <item>Muskelerschlaffung</item>
+        <item>Merkwürdige Emotion(en)</item>
+        <item>Veränderte Wahrnehmung</item>
+        <item>Merkwürdiger Geruch</item>
+        <item>Merkwürdiger Geschmack</item>
+        <item>Ruckartige Bewegung(en)</item>
+    </string-array>
+
+    <string-array name="ns_trigger_list">
+        <item>Unbekannt</item>
+        <item>Alkohol</item>
+        <item>Angst</item>
+        <item>Helles/blendendes Licht</item>
+        <item>Kälte</item>
+        <item>Medikamente/Drogen</item>
+        <item>Aufregung</item>
+        <item>Fieber</item>
+        <item>Flackerndes Licht</item>
+        <item>Hitze</item>
+        <item>Hoher Ketongehalt</item>
+        <item>Hohe/laute Töne/Geräusche</item>
+        <item>Hyperthermie</item>
+        <item>Erkranknung/Erkältung</item>
+        <item>Niedriger Ketongehalt</item>
+        <item>Medikamemtenumstellung</item>
+        <item>Stress</item>
+        <item>Müdigkeit</item>
+        <item>Emotionaler Stress</item>
+        <item>Regelblutung</item>
+    </string-array>
+
+    <string-array name="ns_emergency_list">
+        <item>keine Hilfe</item>
+        <item>Hilfe</item>
+        <item>Medikamente</item>
+    </string-array>
+    <string-array name="ns_daytime_list">
+        <item>Beim Aufwachen</item>
+        <item>Am Tage</item>
+        <item>Beim Einschlafen</item>
+        <item>Während des Schlafs</item>
+    </string-array>
+
+    <string-array name="monthAbbr">
+        <item>Jan.</item>
+        <item>Feb.</item>
+        <item>März</item>
+        <item>Apr.</item>
+        <item>Mai</item>
+        <item>Juni</item>
+        <item>Juli</item>
+        <item>Aug.</item>
+        <item>Sep.</item>
+        <item>Okt.</item>
+        <item>Nov.</item>
+        <item>Dez.</item>
+    </string-array>
+
+    <string-array name="diagram_timeseries_list">
+        <item>Jahresansicht</item>
+        <item>Monatsansicht</item>
+    </string-array>
+    <string-array name="diagram_piechart_list">
+        <item>Anfallsarten</item>
+        <item>Warnzeichen</item>
+        <item>Auslößer</item>
+        <item>Hilfen</item>
+        <item>Tageszeit</item>
+    </string-array>
+
+    <string-array name="nu_gender_list">
+        <item>keine Angabe</item>
+        <item>männlich</item>
+        <item>weiblich</item>
+        <item>weder noch</item>
+    </string-array>
+    <string-array name="nu_colours_pie_chart">
+        <item>Grau</item>
+        <item>Rot</item>
+        <item>Gelb</item>
+        <item>Blau</item>
+        <item>Grün</item>
+        <item>Violett</item>
+        <item>Orange</item>
+        <item>Hellblau</item>
+        <item>Dunkelgrün</item>
+        <item>Dunkelrot</item>
+        <item>Leuchtendes Gelb</item>
+        <item>Pink</item>
+        <item>Indigo</item>
+        <item>Hellgrün</item>
+        <item>Dunkles Orange</item>
+        <item>Helles Orange</item>
+        <item>Dunkelgelb</item>
+        <item>Rosa</item>
+    </string-array>
+
+    <string-array name="languages">
+        <item>en Englisch</item>
+        <item>de Deutsch</item>
+    </string-array>
+</resources>
