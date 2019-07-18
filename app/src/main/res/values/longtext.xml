@@ -5,10 +5,25 @@
 
         This App do not save any personal information.
     </string>
-    <string name="unassigned_data">
-        Unassigned files with entries for epileptic seizures exist.
+    <string name="permission_internet_description">
+        Need access to the internet for checking for updates.
 
+        This App do not distribute any personal information.
+    </string>
+    <string name="permission_request_install_packeges_description">
+        Need access to install updates of this app.
+
+        This App do not install other apps except itself when it is updating.
+    </string>
+    <string name="unassigned_data">
+        Unassigned files with entries for epileptic seizures exist.\n
+        \n
         Do you want to assign them to the new user profile?
+    </string>
+    <string name="update_available_description">
+        A new update is available.\n
+        \n
+        Do you want to download and install it?
     </string>
 
 
@@ -36,8 +51,8 @@
     <string-array name="bfList_251">
         <item>
             <b>Bugfixes</b>\n
-            — medication wasn't transferred to editor in seizure entry\n
-            — content after commas in notes wasn't saved correctly\n
+            — medication was not transferred to editor in seizure entry\n
+            — content after commas in notes was not saved correctly\n
         </item>
         <item>
             <b>New Features</b>\n

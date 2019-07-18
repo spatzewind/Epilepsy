@@ -1,10 +1,14 @@
 package com.metzner.enrico.epilepsy;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +18,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -30,6 +36,7 @@ import com.metzner.enrico.epilepsy.diagrams.DiagramActivity;
 import com.metzner.enrico.epilepsy.diary.DiaryActivity;
 import com.metzner.enrico.epilepsy.epi_tools.OnSwipeTouchListener;
 import com.metzner.enrico.epilepsy.epi_tools.PermissionsHelper;
+import com.metzner.enrico.epilepsy.epi_tools.UpdateHelper;
 import com.metzner.enrico.epilepsy.epi_tools.UserEntryHelper;
 import com.metzner.enrico.epilepsy.seizure.NewSeizureEntry;
 import com.metzner.enrico.epilepsy.epi_tools.SeizureEntryHelper;
@@ -41,12 +48,25 @@ import com.metzner.enrico.epilepsy.users.NewUser;
 import com.metzner.enrico.epilepsy.users.UserHolder;
 import com.metzner.enrico.epilepsy.users.UserOverview;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.io.Reader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
@@ -54,23 +74,23 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
     //variables
     private static final String TAG = "MAIN_ACTIVITY";
-    private static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 2;
+    private static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE   = 2;
+    private static final int MY_PERMISSIONS_REQUEST_INTERNET                 = 3;
+    private static final int MY_PERMISSIONS_REQUEST_INSTALL_PACKAGES_STORAGE = 4;
 
     //private TextView timeSinceLastSeizure;
     private int entriesMaxCount;
     private ArrayList<String> users;
     private ArrayList<LineDataSet> dataSets;
     private ArrayList<LegendEntry> legendEntries;
-    //private String[] lineStarts;
     private String[] xAxis_dates;
     private LineChart time_series;
+    private View viewUpdateAvailable, viewUpdateInProgress;
 
     private Context mainContext = this;
     private Locale currentLocale;
 
     private int askForWritePermission;
-
-
 
     
 
@@ -108,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(diagramIntent);
                 overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
             }
+
             @Override
             public void onSwipeRight() {
                 Intent diaryIntent = new Intent(this.getContext(), DiaryActivity.class);
@@ -115,14 +136,28 @@ public class MainActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
             }
         });
+        viewUpdateAvailable = findViewById(R.id.main_activity_update_available_overlay);
+        viewUpdateInProgress = findViewById(R.id.main_activity_update_progress_overlay);
 
         currentLocale = getResources().getConfiguration().locale;
 
-        // check permission
-        if ( ! PermissionsHelper.isPermissionGranted(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) ) {
+        // check permissions
+        if (!PermissionsHelper.isPermissionGranted(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             PermissionsHelper.requestPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE,
                     MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE,
                     getResources().getString(R.string.permission_write_external_storage_description), 0);
+        }
+        if (!PermissionsHelper.isPermissionGranted(this, Manifest.permission.INTERNET)) {
+            PermissionsHelper.requestPermission(this, Manifest.permission.INTERNET, MY_PERMISSIONS_REQUEST_INTERNET,
+                    getResources().getString(R.string.permission_internet_description), 0);
+            Log.d(TAG, "ASK FOR INTERNET permission...");
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            if (!PermissionsHelper.isPermissionGranted(this, Manifest.permission.REQUEST_INSTALL_PACKAGES)) {
+                PermissionsHelper.requestPermission(this, Manifest.permission.REQUEST_INSTALL_PACKAGES,
+                        MY_PERMISSIONS_REQUEST_INSTALL_PACKAGES_STORAGE,
+                        getResources().getString(R.string.permission_request_install_packeges_description), 0);
+            }
         }
 
         //check for user data
@@ -130,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
 
         //get references
         //timeSinceLastSeizure = (TextView) findViewById(R.id.elapsedTimeView);
-        time_series = (LineChart) findViewById(R.id.linechart);
+        time_series = findViewById(R.id.linechart);
     }
     @Override
     protected void onResume() {
@@ -194,12 +229,11 @@ public class MainActivity extends AppCompatActivity {
      **** PERMISSION REQUEST **********************************************************************
      **********************************************************************************************/
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE: {
                 // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // permission was granted, yay! Do the
                     // contacts-related task you need to do.
                     Intent i = new Intent(this, MainActivity.class);
@@ -212,6 +246,33 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
 
+            case MY_PERMISSIONS_REQUEST_INTERNET: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                    Intent i = new Intent(this, MainActivity.class);
+                    startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+                }// else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                //}
+                break;
+            }
+
+            case MY_PERMISSIONS_REQUEST_INSTALL_PACKAGES_STORAGE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                    Intent i = new Intent(this, MainActivity.class);
+                    startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+                }// else {
+                // permission denied, boo! Disable the
+                // functionality that depends on this permission.
+                //}
+                break;
+            }
             // other 'case' lines to check for other
             // permissions this app might request.
         }
@@ -408,62 +469,29 @@ public class MainActivity extends AppCompatActivity {
      **** CHECK FOR VERSION AND USERS *************************************************************
      **********************************************************************************************/
     private void checkPropertyFile() {
-        if( ! PermissionsHelper.isPermissionGranted(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) )
+        if (!PermissionsHelper.isPermissionGranted(this, Manifest.permission.WRITE_EXTERNAL_STORAGE))
             return;
 
+        //check, if "Epilepsy"-directory exists, or create it
         File docFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
-        if(!docFolder.exists())
-            if(!docFolder.mkdir()) {
-                Log.d(TAG, "checkPropertyFile: Error during creation of folder <"+docFolder.getAbsolutePath()+">");
+        if (!docFolder.exists())
+            if (!docFolder.mkdir()) {
+                Log.d(TAG, "checkPropertyFile: Error during creation of folder <" + docFolder.getAbsolutePath() + ">");
                 return;
             }
-
-        File newFolder = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "Epilepsy");
-        if(!newFolder.exists())
-            if(!newFolder.mkdir()) {
-                Log.d(TAG, "checkPropertyFile: Error during creation of folder <"+newFolder.getAbsolutePath()+">");
+        File epiFolder = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "Epilepsy");
+        if (!epiFolder.exists())
+            if (!epiFolder.mkdir()) {
+                Log.d(TAG, "checkPropertyFile: Error during creation of folder <" + epiFolder.getAbsolutePath() + ">");
                 return;
             }
-
-        //copy data files from old saving directory (older version) to new location
-        File oldFolder = new File(getResources().getString(R.string.data_path));
-        if(oldFolder.exists()) {
-            Log.d(TAG, "checkPropertyFile: old Folder = <"+oldFolder.getAbsolutePath()+">");
-            try {
-                if(!newFolder.exists()) {
-                    if(!newFolder.mkdir()) throw new IOException("Could not create <"+newFolder.getAbsolutePath()+">!");
-                }
-                copyFilesRecursive(oldFolder, newFolder);
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        }
-        Log.d(TAG, "checkPropertyFile: new Folder = <"+newFolder.getAbsolutePath()+">");
-
-        //delete files, which will never used again
-        String[] filesToDelete = new String[]{
-                "epi_profil.txt",
-                "seizureTypes.txt",
-                "warningTypes.txt",
-                "triggerTypes.txt"
-        };
-        for(String s: filesToDelete) {
-            File f = new File(newFolder, s);
-            if(f.exists()) {
-                if(!f.delete()) {
-                    Log.d(TAG, "checkPropertyFile: Could not delete <"+f.getAbsolutePath()+">");
-                }
-            } else {
-                Log.d(TAG, "checkPropertyFile: File <"+f.getAbsolutePath()+"> does not exist.");
-            }
-        }
 
         //check if "users.epi" exists
-        final File userFile = new File(newFolder, "users.epi");
-        if(!userFile.exists()) {
+        final File userFile = new File(epiFolder, "users.epi");
+        if (!userFile.exists()) {
             final View noUserInfo = findViewById(R.id.main_activity_no_user_overlay);
             noUserInfo.setVisibility(View.VISIBLE);
-            Button createButton = (Button) findViewById(R.id.main_no_user_create);
+            Button createButton = findViewById(R.id.main_no_user_create);
             createButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -473,7 +501,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(newUserIntent);
                 }
             });
-            Button laterButton = (Button) findViewById(R.id.main_no_user_later);
+            Button laterButton = findViewById(R.id.main_no_user_later);
             laterButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -482,51 +510,45 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-    }
-    private void copyFilesRecursive(@NonNull File src, @NonNull File dst) throws IOException {
-        File[] files = src.listFiles();
-        for(File f: files) {
-            if(f.isDirectory()) {
-                File newDir = new File(dst, f.getName());
-                if(newDir.mkdir()) {
-                    copyFilesRecursive(f, newDir);
-                } else {
-                    Log.d(TAG, "copyFilesRecursive: Could not create directory <"+newDir.getAbsolutePath()+">");
-                    throw new IOException("Could not create directory <"+newDir.getAbsolutePath()+">");
-                }
-            } else {
-                Log.d(TAG, "copyFilesRecursive: try to copy <"+f.getAbsolutePath()+">...");
-                File newFile = new File(dst, f.getName());
-                try (InputStream in = new FileInputStream(f)) {
-                    try (OutputStream out = new FileOutputStream(newFile)) {
-                        // Transfer bytes from in to out
-                        byte[] buf = new byte[1024];
-                        int len;
-                        while ((len = in.read(buf)) > 0) {
-                            out.write(buf, 0, len);
-                        }
-                    }
-                }
-                if(newFile.exists()) {
-                    if(newFile.length()==f.length()) {
-                        if(!f.delete()) {
-                            Log.d(TAG, "copyFilesRecursive: Could not delete directory <"+f.getAbsolutePath()+">");
-                            throw new IOException("Could not delete directory <"+f.getAbsolutePath()+">");
-                        } else {
-                            Log.d(TAG, "copyFilesRecursive: delete <"+f.getAbsolutePath()+">...");
-                        }
-                    }
-                }
-            }
-        }
-        if(!src.delete()) {
-            Log.d(TAG, "copyFilesRecursive: Could not delete directory <"+src.getAbsolutePath()+">");
-            throw new IOException("Could not delete directory <"+src.getAbsolutePath()+">");
-        } else {
-            Log.d(TAG, "copyFilesRecursive: delete <"+src.getAbsolutePath()+">...");
-        }
-    }
 
+
+
+
+        //check if "version.epi" exists
+        //if not, create
+        //if, check for updates
+        UpdateHelper.startUpdateHelper(mainContext);
+        if(UpdateHelper.shouldCheckForUpdates()) {
+            AsyncTask.execute(new Runnable() {
+                @Override
+                public void run() {
+                    if (PermissionsHelper.isPermissionGranted(mainContext, Manifest.permission.INTERNET))
+                        UpdateHelper.checkForUpdates(mainContext);
+
+                    Log.d(TAG, "UpdateCheck - new version available: "+(UpdateHelper.isThereNewVersion() ? "TRUE" : "FALSE"));
+
+                    if(UpdateHelper.isThereNewVersion()) {
+                        ((Activity)mainContext).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                viewUpdateAvailable.setVisibility(View.VISIBLE);
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    }
+    public void discardUpdate(View view) {
+        viewUpdateAvailable.setVisibility(View.INVISIBLE);
+    }
+    public void startUpdate(View view) {
+        viewUpdateAvailable.setVisibility(View.INVISIBLE);
+        viewUpdateInProgress.setVisibility(View.VISIBLE);
+        final ProgressBar pb = findViewById(R.id.ma_up_progressbar);
+        final TextView tv = findViewById(R.id.ma_up_progressvalue);
+        new UpdateHelper.UpdateApp(this, viewUpdateInProgress, pb, tv).execute();
+    }
 
 
 

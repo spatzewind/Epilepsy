@@ -2,15 +2,17 @@ package com.metzner.enrico.epilepsy.epi_tools;
 
 import android.support.annotation.NonNull;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class CryptoHelper {
 
-    public static final int DECRYPT = 1;
-    public static final int ENCRYPT = 2;
+    static final int DECRYPT = 1;
+    static final int ENCRYPT = 2;
 
-    public static final String checkString =
+    static final String checkString =
             "1023User0123User9876User4514User2421User8192User2351User6154User0001User6518User4515User4444User3214User8246User1793User0456User";
 
     private static char[] alphabet = {
@@ -42,7 +44,7 @@ public abstract class CryptoHelper {
         return alphaString.toString();
     }
     @NonNull
-    public static String createNewKey() {
+    static String createNewKey() {
         Random cRand = new Random();
         int aLength = alphabet.length;
         int cipherLength = 41 + 2*cRand.nextInt(11);
@@ -54,7 +56,7 @@ public abstract class CryptoHelper {
         return cipher.toString();
     }
     @NonNull
-    public static String crypt(@NonNull String _src, @NonNull String _key, int de_en_crypt) {
+    static String crypt(@NonNull String _src, @NonNull String _key, int de_en_crypt) {
         int aLength = alphabet.length;
         StringBuilder dst = new StringBuilder();
         int ed = (de_en_crypt==DECRYPT ? -1 : (de_en_crypt==ENCRYPT ? 1 : 0));
@@ -71,5 +73,15 @@ public abstract class CryptoHelper {
             dst.append(alphabet[ni%aLength]);
         }
         return dst.toString();
+    }
+
+    @NonNull
+    static String readAllFromBufferedReader(@NonNull BufferedReader _br) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        int cp;
+        while ((cp = _br.read()) != -1) {
+            sb.append((char) cp);
+        }
+        return sb.toString();
     }
 }

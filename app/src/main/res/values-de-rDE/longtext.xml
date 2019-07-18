@@ -5,10 +5,25 @@
 
         Diese App speichert keine persönlichen Informationen.
     </string>
-    <string name="unassigned_data">
-        Nicht zugeordnete Dateien mit Einträgen zu epileptischen Anfällen existieren.
+    <string name="permission_internet_description">
+        Benötigt Internet-rechte um nach Updates zu suchen und diese zu installieren.
 
+        Diese App teilt/verbreitet keine persönlichen Information.
+    </string>
+    <string name="permission_request_install_packeges_description">
+        Benötigt Erlaubnis Apps zu installieren
+
+        Diese App installiert keine anderen außer sich selbst zu Updatezwecken.
+    </string>
+    <string name="unassigned_data">
+        Nicht zugeordnete Dateien mit Einträgen zu epileptischen Anfällen existieren.\n
+        \n
         Sollen diese dem neuen Benutzerprofil zugeordnet werden?
+    </string>
+    <string name="update_available_description">
+        Ein Update is verfügbar.\n
+        \n
+        Soll es gedownloadet und installiert werden?
     </string>
 
 

@@ -16,4 +16,7 @@
     <color name="dark_red">#990000</color>
     <color name="blue_metallic">#0d47a1</color>
 
+    <color name="light_gray">#CCCCCC</color>
+    <color name="mid_gray">#999999</color>
+
 </resources>

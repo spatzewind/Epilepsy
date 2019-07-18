@@ -13,8 +13,6 @@
     <string name="about_name">Epilepsy - about</string>
     <string name="bugfixes_name">Epilepsy - bugfixes</string>
 
-    <string name="data_path" translatable="false">/storage/emulated/0/Epilepsy</string>
-
     <string name="bt_yes">Yes</string>
     <string name="bt_no">No</string>
     <string name="bt_save">Save</string>
@@ -115,6 +113,7 @@
     <string name="ueh_error_file_dont_exist">No user data file exist.</string>
 
     <string name="settings_language">Language</string>
+    <string name="ma_s_progress">Progress</string>
 
 
     <string-array name="seizure_type_list">
