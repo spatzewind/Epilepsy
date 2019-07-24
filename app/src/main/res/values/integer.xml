@@ -35,4 +35,14 @@
         <item>0xffffdcdc</item>
     </integer-array>
 
+    <integer-array name="updateFrequencyInt">
+        <item>2147483647</item>
+        <item>1</item>
+        <item>30</item>
+        <item>60</item>
+        <item>360</item>
+        <item>720</item>
+        <item>1440</item>
+        <item>10080</item>
+    </integer-array>
 </resources>

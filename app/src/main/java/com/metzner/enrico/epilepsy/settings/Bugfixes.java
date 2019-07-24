@@ -5,6 +5,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -56,8 +57,9 @@ public class Bugfixes extends AppCompatActivity {
         LocaleManager.resetTitle(this);
         setContentView(R.layout.activity_bugfixes);
 
-        ExpandableListView elvBfF = (ExpandableListView) findViewById(R.id.bf_f_listview);
+        ExpandableListView elvBfF = findViewById(R.id.bf_f_listview);
         HashMap<String, List<CharSequence>> elvHashContent = new LinkedHashMap<>();
+        elvHashContent.put("2.6.0", Arrays.asList(getResources().getTextArray(R.array.bfList_20600)));
         elvHashContent.put("2.5.2", Arrays.asList(getResources().getTextArray(R.array.bfList_252)));
         elvHashContent.put("2.5.1", Arrays.asList(getResources().getTextArray(R.array.bfList_251)));
         CustomExpandableListAdapter cELV = new CustomExpandableListAdapter(this, elvHashContent);
@@ -80,9 +82,9 @@ public class Bugfixes extends AppCompatActivity {
         private List<String> expandableListTitle;
         private HashMap<String, List<CharSequence>> expandableListDetail;
 
-        public CustomExpandableListAdapter(Context context, HashMap<String, List<CharSequence>> _expandableListDetail) {
+        CustomExpandableListAdapter(Context context, @NonNull HashMap<String, List<CharSequence>> _expandableListDetail) {
             this.context = context;
-            this.expandableListTitle = new ArrayList<String>(_expandableListDetail.keySet());
+            this.expandableListTitle = new ArrayList<>(_expandableListDetail.keySet());
             this.expandableListDetail = _expandableListDetail;
         }
 
@@ -104,11 +106,16 @@ public class Bugfixes extends AppCompatActivity {
             if (convertView == null) {
                 LayoutInflater layoutInflater = (LayoutInflater) this.context
                         .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = layoutInflater.inflate(R.layout.bf_elv_item, null);
+                if (layoutInflater != null) {
+                    convertView = layoutInflater.inflate(R.layout.bf_elv_item, null);
+                }
             }
-            TextView expandedListTextView = (TextView) convertView
-                    .findViewById(R.id.elvGroupListItem);
-            expandedListTextView.setText(expandedListText);
+            TextView expandedListTextView;
+            if (convertView != null) {
+                expandedListTextView = convertView
+                        .findViewById(R.id.elvGroupListItem);
+                expandedListTextView.setText(expandedListText);
+            }
             return convertView;
         }
 
@@ -140,12 +147,17 @@ public class Bugfixes extends AppCompatActivity {
             if (convertView == null) {
                 LayoutInflater layoutInflater = (LayoutInflater) this.context.
                         getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = layoutInflater.inflate(R.layout.bf_elv_group, null);
+                if (layoutInflater != null) {
+                    convertView = layoutInflater.inflate(R.layout.bf_elv_group, null);
+                }
             }
-            TextView listTitleTextView = (TextView) convertView
-                    .findViewById(R.id.elvGroupListTitle);
-            listTitleTextView.setTypeface(null, Typeface.BOLD);
-            listTitleTextView.setText(listTitle);
+            TextView listTitleTextView;
+            if (convertView != null) {
+                listTitleTextView = convertView
+                        .findViewById(R.id.elvGroupListTitle);
+                listTitleTextView.setTypeface(null, Typeface.BOLD);
+                listTitleTextView.setText(listTitle);
+            }
             return convertView;
         }
 

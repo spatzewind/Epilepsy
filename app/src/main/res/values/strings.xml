@@ -113,6 +113,8 @@
     <string name="ueh_error_file_dont_exist">No user data file exist.</string>
 
     <string name="settings_language">Language</string>
+    <string name="settings_update">Update</string>
+    <string name="s_forceUpdate">force update</string>
     <string name="ma_s_progress">Progress</string>
 
 
@@ -240,5 +242,15 @@
     <string-array name="languages">
         <item>en english</item>
         <item>de german</item>
+    </string-array>
+    <string-array name="updateFrequency">
+        <item>never</item>
+        <item>once a minute</item>
+        <item>every half hour</item>
+        <item>once an hour</item>
+        <item>every 6 hours</item>
+        <item>once half day</item>
+        <item>once a day</item>
+        <item>once a week</item>
     </string-array>
 </resources>

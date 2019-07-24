@@ -18,6 +18,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.metzner.enrico.epilepsy.BuildConfig;
+import com.metzner.enrico.epilepsy.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,6 +59,7 @@ public class UpdateHelper {
     public static void setTimeBetweenUpdateChecks(long _tbuc) {
         timeBetweenUpdateChecks = _tbuc;
     }
+    public static long getTimeBetweenUpdateChecks() { return timeBetweenUpdateChecks; }
 
     public static boolean shouldCheckForUpdates() {
         long currentTime = System.currentTimeMillis();
@@ -98,8 +100,14 @@ public class UpdateHelper {
         if (versionFile.exists()) {
             try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(versionFile)))) {
                 JSONObject json = new JSONObject(CryptoHelper.readAllFromBufferedReader(br));
-                timeBetweenUpdateChecks = json.getLong("period");
                 lastUpdateTime = json.getLong("time");
+                int intTBUC = json.getInt("period");
+                int[] pArray = context.getResources().getIntArray(R.array.updateFrequencyInt);
+                int currentP = 0;
+                for(int p=0; p<pArray.length; p++) {
+                    if(pArray[p]<=intTBUC) currentP = p;
+                }
+                timeBetweenUpdateChecks = 60000L * (long) pArray[currentP];
             } catch (IOException ioe) {
                 ioe.printStackTrace();
             } catch (JSONException je) {
@@ -116,7 +124,6 @@ public class UpdateHelper {
 
     public static void checkForUpdates(Context context) {
         lastUpdateTime = System.currentTimeMillis();
-        saveVersionCheck(context);
         try  {
             URL url = new URL(REMOTE_VERSION_CHECK_FILE);
 //            URLConnection connection = url.openConnection();
@@ -126,6 +133,7 @@ public class UpdateHelper {
             JSONObject obj = new JSONArray(CryptoHelper.readAllFromBufferedReader(br)).getJSONObject(0);
             JSONObject apkData = obj.getJSONObject("apkData");
             newestVersion = apkData.getString("versionName");
+            saveVersionCheck(context);
         } catch( MalformedURLException mue) {
             mue.printStackTrace();
         } catch (IOException ioe) {
@@ -142,7 +150,8 @@ public class UpdateHelper {
         File versionFile = new File(internalFolder, versionFileName);
         try (PrintWriter pw = new PrintWriter(new FileOutputStream(versionFile))) {
             pw.println("{");
-            pw.println("    \"period\":"+timeBetweenUpdateChecks+",");
+            int intTBUC = (int) (timeBetweenUpdateChecks / 60000L);
+            pw.println("    \"period\":"+intTBUC+",");
             pw.println("    \"time\":"+lastUpdateTime+"");
             pw.println("}");
             pw.flush();
@@ -206,6 +215,7 @@ public class UpdateHelper {
                 }
                 os.flush();
 
+                saveVersionCheck(context);
                 downloadSuccessful = true;
             } catch( IOException ioe) {
                 ioe.printStackTrace();

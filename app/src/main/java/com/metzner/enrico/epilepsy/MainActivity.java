@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
@@ -20,7 +19,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -48,25 +46,7 @@ import com.metzner.enrico.epilepsy.users.NewUser;
 import com.metzner.enrico.epilepsy.users.UserHolder;
 import com.metzner.enrico.epilepsy.users.UserOverview;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.io.Reader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
@@ -156,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
             if (!PermissionsHelper.isPermissionGranted(this, Manifest.permission.REQUEST_INSTALL_PACKAGES)) {
                 PermissionsHelper.requestPermission(this, Manifest.permission.REQUEST_INSTALL_PACKAGES,
                         MY_PERMISSIONS_REQUEST_INSTALL_PACKAGES_STORAGE,
-                        getResources().getString(R.string.permission_request_install_packeges_description), 0);
+                        getResources().getString(R.string.permission_request_install_packages_description), 0);
             }
         }
 

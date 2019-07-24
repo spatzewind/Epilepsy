@@ -10,7 +10,7 @@
 
         Diese App teilt/verbreitet keine persönlichen Information.
     </string>
-    <string name="permission_request_install_packeges_description">
+    <string name="permission_request_install_packages_description">
         Benötigt Erlaubnis Apps zu installieren
 
         Diese App installiert keine anderen außer sich selbst zu Updatezwecken.
@@ -33,6 +33,18 @@
 
 
 
+    <string-array name="bfList_20600">
+        <item>
+            <b>Neue Features</b>\n
+            — System für eigenständige Updates\n
+            — Veränderbare Update-Häufigkeit\n
+        </item>
+        <item>
+            <b>Änderungen</b>\n
+            — Introduce higher version number to make more sub-versions possible\n
+            — Erweiterte/s Changelog/Bugfix-Liste\n
+        </item>
+    </string-array>
     <string-array name="bfList_252">
         <item>
             <b>Bugfixes</b>\n
@@ -43,7 +55,7 @@
             — Stoppuhr\n
         </item>
         <item>
-            <b>Veränderungen</b>\n
+            <b>Änderungen</b>\n
             — Hintergrund von violett auf weiß geändert
         </item>
     </string-array>

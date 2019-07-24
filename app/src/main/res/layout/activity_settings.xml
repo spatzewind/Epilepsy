@@ -1,69 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/settings_relative_layout_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".settings.Settings">
 
-    <TableLayout
-        android:id="@+id/table_settings"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/settings_main_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="visible" >
+
+        <TableLayout
+            android:id="@+id/table_settings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:id="@+id/row_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/row_language_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/settings_language"
+                    android:textColor="@color/violet1"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/row_language_choice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/row_update_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/settings_update"
+                    android:textColor="@color/violet1"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/row_update_choice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:entries="@array/updateFrequency"
+                    android:textAlignment="center" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row_force_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Space
+                    android:layout_weight="1" />
+
+                <Button
+                    android:onClick="forceUpdate"
+                    android:text="@string/s_forceUpdate"
+                    tools:text="@string/s_forceUpdate" />
+
+            </TableRow>
+
+        </TableLayout>
 
         <TableRow
-            android:id="@+id/row_language"
+            android:id="@+id/settings_buttonline"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-            <TextView
-                android:id="@+id/row_language_title"
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/settings_save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/settings_language"
-                android:textColor="@color/violet1"
-                android:textSize="18sp" />
+                android:background="@drawable/button_bg_save"
+                android:contentDescription="@string/bt_ok"
+                android:onClick="applySettings"
+                android:text="@string/bt_ok"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:text="@string/bt_ok" />
 
-            <Spinner
-                android:id="@+id/row_language_choice"
-                android:layout_width="match_parent"
+            <Space
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
+
         </TableRow>
+    </android.support.constraint.ConstraintLayout>
 
-    </TableLayout>
-
-    <TableRow
-        android:id="@+id/settings_buttonline"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/settings_update_progress_overlay"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_height="match_parent"
+        android:visibility="invisible" >
 
-        <Space
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/s_up_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/settings_save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/button_bg_save"
-            android:contentDescription="@string/bt_ok"
-            android:onClick="applySettings"
-            android:text="@string/bt_ok"
+            android:layout_marginTop="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/mid_violet"
+            android:text="@string/ma_s_progress"
+            android:textSize="24sp"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            tools:text="@string/bt_ok" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        <Space
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_marginTop="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/s_up_title">
 
-    </TableRow>
-</android.support.constraint.ConstraintLayout>
+            <ProgressBar
+                android:id="@+id/s_up_progressbar"
+                android:layout_width="240dp"
+                android:layout_height="240dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="5"
+                android:progressDrawable="@drawable/circular_progress_bar"
+                android:secondaryProgress="100" />
+
+            <TextView
+                android:id="@+id/s_up_progressvalue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text=""
+                android:textColor="@color/violet1"
+                android:textSize="16sp"/>
+
+        </RelativeLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>

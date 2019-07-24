@@ -103,6 +103,8 @@
     <string name="ueh_error_file_dont_exist">Es existiert keine Nutzer-Daten-Datei.</string>
 
     <string name="settings_language">Sprache</string>
+    <string name="settings_update">Update</string>
+    <string name="s_forceUpdate">Erzwinge Update</string>
     <string name="ma_s_progress">Fortschritt</string>
 
 
@@ -232,5 +234,15 @@
     <string-array name="languages">
         <item>en Englisch</item>
         <item>de Deutsch</item>
+    </string-array>
+    <string-array name="updateFrequency">
+        <item>niemals</item>
+        <item>pro Minute einmal</item>
+        <item>pro halbe Stunde einmal</item>
+        <item>pro Stunde einmal</item>
+        <item>aller 6 Stunden einmal</item>
+        <item>pro halben Tag einmal</item>
+        <item>pro Tag einmal</item>
+        <item>pro Woche einmal</item>
     </string-array>
 </resources>
