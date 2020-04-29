@@ -287,20 +287,10 @@ public class MainActivity extends AppCompatActivity {
             if(new_day<1) {
                 new_month = (month+11)%12;
                 if(new_month>month) new_year = year-1;
-                switch(new_month) {
-                    case 0: new_day += 31; break; //january
-                    case 1: new_day += (new_year%4==0 ? 29 : 28); break; //february
-                    case 2: new_day += 31; break; //march
-                    case 3: new_day += 30; break; //april
-                    case 4: new_day += 31; break; //mai
-                    case 5: new_day += 30; break; //june
-                    case 6: new_day += 31; break; //july
-                    case 7: new_day += 31; break; //august
-                    case 8: new_day += 30; break; //september
-                    case 9: new_day += 31; break; //october
-                    case 10: new_day += 30; break; //november
-                    case 11: new_day += 31; break; //december
-                }
+                int monthlength = 30 + (new_month+(new_month<7?1:0))%2;
+                if (new_month==1)
+                    monthlength = new_year%400==0 || (new_year%100!=0 && new_year%4==0) ? 29 : 28;
+                new_day += monthlength;
             }
             lineStarts[6-t] = ""+new_year+""+(new_month>8 ? "" : "0")+(new_month+1)+""+(new_day>9 ? "" : "0")+new_day;
             xAxis_dates[6-t] = SeizureEntryHelper.date2string(new int[]{new_year,new_month,new_day},
@@ -433,7 +423,7 @@ public class MainActivity extends AppCompatActivity {
 
         time_series.invalidate();
     }
-    private class IntegerValueFormatter implements IAxisValueFormatter {
+    private static class IntegerValueFormatter implements IAxisValueFormatter {
         @Override
         public String getFormattedValue(float value, AxisBase axis) {
             int iValue = (int) value;

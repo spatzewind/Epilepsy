@@ -19,7 +19,7 @@ public class SeizureHolder {
     private int[] seizureCheckedWarnings;
     private int[] seizureCheckedTrigger;
     private int seizureEmergencyID;
-    private int seizureDaytimeID;
+    private int seizureActivityID;
     private String seizure_notes;
 
     // constructor
@@ -49,12 +49,12 @@ public class SeizureHolder {
             seizureCheckedTrigger = new int[trigger.length];
             for(int w=0; w<trigger.length; w++) seizureCheckedTrigger[w] = Integer.parseInt(trigger[w]);
             seizureEmergencyID = Integer.parseInt(info[6]);
-            seizureDaytimeID = 0;
-            int[] daytimeIDs = context.getResources().getIntArray(R.array.ns_daytime_list_ids);
-            int sourceDaytimeID = Integer.parseInt(info[7]);
-            for(int dt=0; dt<daytimeIDs.length; dt++) {
-                if(daytimeIDs[dt]==sourceDaytimeID) {
-                    seizureDaytimeID = dt;
+            seizureActivityID = 0;
+            int[] activityIDs = context.getResources().getIntArray(R.array.ns_activity_list_ids);
+            int sourceActivityID = Integer.parseInt(info[7]);
+            for(int at=0; at<activityIDs.length; at++) {
+                if(activityIDs[at]==sourceActivityID) {
+                    seizureActivityID = at;
                     break;
                 }
             }
@@ -77,7 +77,7 @@ public class SeizureHolder {
             seizureCheckedWarnings = new int[0];
             seizureCheckedTrigger = new int[0];
             seizureEmergencyID = 0;
-            seizureDaytimeID = 0;
+            seizureActivityID = 0;
             seizure_notes = "";
         }
     }
@@ -119,8 +119,8 @@ public class SeizureHolder {
     public int[] getSeizureCheckedTrigger() { return seizureCheckedTrigger; }
     public void setSeizureEmergency(int _emergency_position) { seizureEmergencyID = _emergency_position; }
     public int getSeizureEmergency() { return seizureEmergencyID; }
-    public void setSeizureDaytime(int _daytime_position) { seizureDaytimeID = _daytime_position; }
-    public int getSeizureDaytime() { return seizureDaytimeID; }
+    public void setSeizureActivity(int _activity_position) { seizureActivityID = _activity_position; }
+    public int getSeizureActivity() { return seizureActivityID; }
     public String getSeizureNotes() { return seizure_notes; }
     public void setSeizureNotes(String _notes) {
         seizure_notes = _notes;
@@ -150,8 +150,8 @@ public class SeizureHolder {
         //emergency
         newSeizureEntryString += "," + seizureEmergencyID;
         //daytime
-        int[] daytimeIDs = context.getResources().getIntArray(R.array.ns_daytime_list_ids);
-        newSeizureEntryString += "," + daytimeIDs[seizureDaytimeID];
+        int[] activityIDs = context.getResources().getIntArray(R.array.ns_activity_list_ids);
+        newSeizureEntryString += "," + activityIDs[seizureActivityID];
         //notes
         String notes_string = seizure_notes;
         if( seizure_notes.equals(context.getResources().getString(R.string.ns_notes))

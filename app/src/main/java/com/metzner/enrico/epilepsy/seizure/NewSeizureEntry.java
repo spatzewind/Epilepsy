@@ -57,7 +57,7 @@ public class NewSeizureEntry extends AppCompatActivity {
     private boolean runTimer;
     private Thread seizurePeriodTimer;
     private NumberPicker hoursPicker, minutesPicker, secondsPicker;
-    private Spinner userSpinner,seizureTypePicker,emergencyPicker,daytimePicker;
+    private Spinner userSpinner,seizureTypePicker,emergencyPicker,activityPicker;
     private CheckBoxGroupAdapter warningAdapter, triggerAdapter;
     private EditText notesPicker;
     private Button date_button, time_button, duration_button,
@@ -169,7 +169,7 @@ public class NewSeizureEntry extends AppCompatActivity {
             seizureEntry.setSeizureTime(calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE));
             seizureEntry.setSeizureDuration(0L);
             seizureEntry.setSeizureEmergency(0);
-            seizureEntry.setSeizureDaytime(0);
+            seizureEntry.setSeizureActivity(0);
             seizureEntry.setSeizureNotes(getResources().getString(R.string.ns_notes));
             tr_button_newentry.setVisibility(View.VISIBLE);
             tr_button_diary.setVisibility(View.INVISIBLE);
@@ -226,7 +226,7 @@ public class NewSeizureEntry extends AppCompatActivity {
         ListView triggerPicker = (ListView) findViewById(R.id.ns_view_trigger_group);
         CheckBoxGroupListener triggerListener = new CheckBoxGroupListener(1);
         emergencyPicker = (Spinner) findViewById(R.id.row_emergency_edit);
-        daytimePicker = (Spinner) findViewById(R.id.row_daytime_edit);
+        activityPicker = (Spinner) findViewById(R.id.row_activity_edit);
         notesPicker = (EditText) findViewById(R.id.ns_view_notes_edit);
 
         //fill views with content
@@ -256,7 +256,7 @@ public class NewSeizureEntry extends AppCompatActivity {
         if(trigger_string.length()>maxStringLength) trigger_string = trigger_string.substring(0,maxStringLength-3) + "...";
         trigger_button.setText(trigger_string);
         emergencyPicker.setSelection(seizureEntry.getSeizureEmergency());
-        daytimePicker.setSelection(seizureEntry.getSeizureDaytime());
+        activityPicker.setSelection(seizureEntry.getSeizureActivity());
         String notes_string = seizureEntry.getSeizureNotes();
         if(notes_string.length()>maxStringLength) notes_string = notes_string.substring(0,maxStringLength-3) + "...";
         notes_button.setText(notes_string);
@@ -271,7 +271,7 @@ public class NewSeizureEntry extends AppCompatActivity {
     /**********************************************************************************************
      **** EDIT SEIZURE ENTRY **********************************************************************
      **********************************************************************************************/
-    public void invokeButtonInput(View view) {
+    public void invokeButtonInput(@NonNull View view) {
         switch (view.getId()) {
             case R.id.row_date_edit:
                 View dateView = findViewById(R.id.ns_view_date_picker);
@@ -324,7 +324,7 @@ public class NewSeizureEntry extends AppCompatActivity {
                 break;
         }
     }
-    public void retrieveButtonInput(View view) {
+    public void retrieveButtonInput(@NonNull View view) {
         switch (view.getId()) {
             case R.id.view_date_edit:
                 seizureEntry.setSeizureDate(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
@@ -439,7 +439,7 @@ public class NewSeizureEntry extends AppCompatActivity {
         //because no OnItemClickListener get set to the spinner, and no other way exists for noticing changes
         seizureEntry.setSeizureTypeID(seizureTypePicker.getSelectedItemPosition());
         seizureEntry.setSeizureEmergency(emergencyPicker.getSelectedItemPosition());
-        seizureEntry.setSeizureDaytime(daytimePicker.getSelectedItemPosition());
+        seizureEntry.setSeizureActivity(activityPicker.getSelectedItemPosition());
 
         //check, if all tags are filled
         Calendar calendar = Calendar.getInstance();

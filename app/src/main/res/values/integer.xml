@@ -7,11 +7,14 @@
     <integer name="MAIN_ACTIVITY_ID">13010914</integer>
     <integer name="DIARY_ACTIVITY_ID">4090118</integer>
 
-    <integer-array name="ns_daytime_list_ids">
-        <item>97</item>
-        <item>100</item>
-        <item>102</item>
-        <item>116</item>
+    <integer-array name="ns_activity_list_ids">
+        <item>97</item><!--Aufwachen-->
+        <item>100</item><!--Arbeiten, früher "tagsüber"-->
+        <item>191615</item>
+        <item>120519</item>
+        <item>182108</item>
+        <item>102</item><!--Einschlafen-->
+        <item>116</item><!--Schlafen-->
     </integer-array>
 
     <integer-array name="colors_pie_chart">

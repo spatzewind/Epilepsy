@@ -59,7 +59,7 @@
     <string name="ns_warning">Warnzeichen</string>
     <string name="ns_trigger">Auslöser</string>
     <string name="ns_emergency">Hilfe?</string>
-    <string name="ns_daytime">Tageszeit</string>
+    <string name="ns_activity">Aktivität</string>
     <string name="ns_notes">Anmerkung(en)</string>
     <string name="ns_seizure">Anfallstyp</string>
     <string name="ns_status">Status</string>
@@ -112,9 +112,9 @@
 
     <string-array name="seizure_type_list">
         <item>unbekannt</item>
-        <item>Absenz</item>
+        <item>Absence</item>
         <item>Atonischer Anfall</item>
-        <item>Atypische Absenz</item>
+        <item>Atypische Absence</item>
         <item>Nur Aura</item>
         <item>Clonischer Anfall</item>
         <item>Komplex-partieller (fokaler) Anfall</item>
@@ -140,6 +140,7 @@
         <item>Merkwürdiger Geruch</item>
         <item>Merkwürdiger Geschmack</item>
         <item>Ruckartige Bewegung(en)</item>
+        <item>Langsame Wahrnehmung</item>
     </string-array>
 
     <string-array name="ns_trigger_list">
@@ -170,11 +171,14 @@
         <item>Hilfe</item>
         <item>Medikamente</item>
     </string-array>
-    <string-array name="ns_daytime_list">
-        <item>Beim Aufwachen</item>
-        <item>Am Tage</item>
-        <item>Beim Einschlafen</item>
-        <item>Während des Schlafs</item>
+    <string-array name="ns_activity_list">
+        <item>Aufwachen</item>
+        <item>Arbeiten</item>
+        <item>Sport</item>
+        <item>Lesen</item>
+        <item>Ruhe/Entspannung</item>
+        <item>Einschlafen</item>
+        <item>Schlafen</item>
     </string-array>
 
     <string-array name="monthAbbr">
@@ -201,7 +205,7 @@
         <item>Warnzeichen</item>
         <item>Auslößer</item>
         <item>Hilfen</item>
-        <item>Tageszeit</item>
+        <item>Aktivität</item>
     </string-array>
 
     <string-array name="nu_gender_list">

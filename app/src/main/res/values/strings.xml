@@ -69,7 +69,7 @@
     <string name="ns_warning">Warning(s)</string>
     <string name="ns_trigger">Trigger</string>
     <string name="ns_emergency">Emergency</string>
-    <string name="ns_daytime">Time of day</string>
+    <string name="ns_activity">Activity</string>
     <string name="ns_notes">Note(s)</string>
     <string name="ns_seizure">Seizure type</string>
     <string name="ns_status">Status</string>
@@ -148,6 +148,7 @@
         <item>Strange smell</item>
         <item>Strange taste</item>
         <item>Jerky movement of limb</item>
+        <item>Slow perception</item>
     </string-array>
 
     <string-array name="ns_trigger_list">
@@ -178,11 +179,14 @@
         <item>emergency</item>
         <item>medication</item>
     </string-array>
-    <string-array name="ns_daytime_list">
-        <item>on awaking</item>
-        <item>during day</item>
+    <string-array name="ns_activity_list">
+        <item>waking up</item>
+        <item>working</item>
+        <item>physical activity</item>
+        <item>reading</item>
+        <item>rest/relaxation</item>
         <item>falling asleep</item>
-        <item>during sleep</item>
+        <item>sleeping</item>
     </string-array>
 
     <string-array name="monthAbbr">
@@ -209,7 +213,7 @@
         <item>warnings</item>
         <item>trigger</item>
         <item>emergency</item>
-        <item>daytime</item>
+        <item>activity</item>
     </string-array>
 
     <string-array name="nu_gender_list">

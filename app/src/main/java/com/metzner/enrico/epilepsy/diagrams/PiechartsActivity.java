@@ -264,15 +264,15 @@ public class PiechartsActivity extends AppCompatActivity {
             pie_data.add((float) newData[d]);
         }
     }
-    private void loadDaytime() {
+    private void loadActivities() {
         pie_titles.clear();
-        pie_titles.addAll(Arrays.asList(getResources().getStringArray(R.array.ns_daytime_list)));
+        pie_titles.addAll(Arrays.asList(getResources().getStringArray(R.array.ns_activity_list)));
         int[] newData = new int[pie_titles.size()];
         for(SeizureHolder sh: seizureEntries) {
             int[] date = sh.getSeizureDate();
             int shDate = date[0]*10000 + date[1]*100 + date[2];
             if(shDate>minDate) {
-                newData[sh.getSeizureDaytime()]++;
+                newData[sh.getSeizureActivity()]++;
             }
         }
         pie_data.clear();
@@ -288,7 +288,7 @@ public class PiechartsActivity extends AppCompatActivity {
             case 1: loadWarnings(); break; //warnings
             case 2: loadTrigger(); break; //trigger
             case 3: loadEmergency(); break; //emergency
-            case 4: loadDaytime(); break; //time of day
+            case 4: loadActivities(); break; //time of day
             default: //return;
         }
 

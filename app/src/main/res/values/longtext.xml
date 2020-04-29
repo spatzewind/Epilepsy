@@ -28,12 +28,25 @@
 
 
     <string name="a_credits_text">
-        I thank my girlfriend for the inspiration and the concept of this app because she has epilepsy herself.
+        I thank my girlfriend Lena K. for the inspiration and the concept of this app because she has epilepsy herself.\n
+        Thanks also go to Sabine H for support and ideas for improvement.\n
+        Without Google LLC Android Studio this app would not be possible in the form it is now.
     </string>
 
 
 
-
+    <string-array name="bfList_20600005">
+        <item>
+            <b>Changes</b>\n
+            — some german translations\n
+            — improved icons for absences and atonic seizures
+        </item>
+        <item>
+            <b>Bugfixes</b>\n
+            — Crash in time-series for march if seizures are entered after 28th of march
+              do to miscalculated month length.
+        </item>
+    </string-array>
     <string-array name="bfList_20600">
         <item>
             <b>New Features</b>\n

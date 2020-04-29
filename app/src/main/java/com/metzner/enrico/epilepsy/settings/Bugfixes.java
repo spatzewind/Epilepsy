@@ -59,6 +59,7 @@ public class Bugfixes extends AppCompatActivity {
 
         ExpandableListView elvBfF = findViewById(R.id.bf_f_listview);
         HashMap<String, List<CharSequence>> elvHashContent = new LinkedHashMap<>();
+        elvHashContent.put("2.6.0.5", Arrays.asList(getResources().getTextArray(R.array.bfList_20600005)));
         elvHashContent.put("2.6.0", Arrays.asList(getResources().getTextArray(R.array.bfList_20600)));
         elvHashContent.put("2.5.2", Arrays.asList(getResources().getTextArray(R.array.bfList_252)));
         elvHashContent.put("2.5.1", Arrays.asList(getResources().getTextArray(R.array.bfList_251)));

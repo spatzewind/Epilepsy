@@ -28,11 +28,25 @@
 
 
     <string name="a_credits_text">
-        Ich danke meiner Freundin für die Inspiration und das Konzept dieser App, da sie selbst Epilepsie hat.
+        Ich danke meiner Freundin Lena K. für die Inspiration und das Konzept dieser App, da sie selbst Epilepsie hat.\n
+        Dank gilt auch für Unterstützung und Verbesserungsideen an Sabine H.\n
+        Ohne Google LLC Android Studio wäre diese App nicht in der Form möglich, wie sie es jetzt ist.
     </string>
 
 
 
+    <string-array name="bfList_20600005">
+        <item>
+            <b>Änderungen</b>\n
+            — Einige deutsche Übersetzungen\n
+            — Verbesserte Icons für Absencen und Atonische Anfälle
+        </item>
+        <item>
+            <b>Bugfixes</b>\n
+            — Absturz in den Monatszeitreihen für März wenn Anfälle nach dem 28. des Monats
+              eingetragen wurden, weil die Länge des Monats falsch berechnet wurde.
+        </item>
+    </string-array>
     <string-array name="bfList_20600">
         <item>
             <b>Neue Features</b>\n
@@ -41,7 +55,7 @@
         </item>
         <item>
             <b>Änderungen</b>\n
-            — Introduce higher version number to make more sub-versions possible\n
+            — Einführung höherer Versionsnummern um Subversion zu berücksichtigen\n
             — Erweiterte/s Changelog/Bugfix-Liste\n
         </item>
     </string-array>

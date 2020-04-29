@@ -275,13 +275,14 @@ public class TimeSeriesActivity extends AppCompatActivity {
                 break;
             case TS_MONTH:
                 int monthLength = 30 + (choosenDate[1]+(choosenDate[1]<7?1:0))%2;
-                if(choosenDate[1]==2) {
+                if(choosenDate[1]==1) {
                     if(choosenDate[0]%400==0 || (choosenDate[0]%100!=0 && choosenDate[0]%4==0)) {
                         monthLength = 29;
                     } else {
                         monthLength = 28;
                     }
                 }
+                Log.d(TAG,"calculated monthlength: "+monthLength);
                 barChartValues = new int[monthLength];
                 barChartLabels = new String[monthLength];
                 if(hasPermission) {
